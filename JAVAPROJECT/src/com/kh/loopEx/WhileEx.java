@@ -18,4 +18,9 @@ public class WhileEx {
         }
         System.out.println("합계 : " + sum);
     }
+
+    /*
+        do-while
+     */
+
 }

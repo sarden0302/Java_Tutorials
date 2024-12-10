@@ -25,6 +25,8 @@ public class FIleServiceRun {
             }
         }
 
-        fileService.createFile(content);
+        //fileService.createFile(content);
+        //fileService.readFile();
+        fileService.appendToFile("\n- 햄버거\n- 돈까스\n- 쌀국수\n- 카레");
     }
 }

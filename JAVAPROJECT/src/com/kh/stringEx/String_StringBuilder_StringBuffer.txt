@@ -1,13 +1,44 @@
+String
+- (가변) 길이가 변하지 않는 객체
+  한 번 생성된 문자열은 변경할 수 없음(새로 생성되는 것)
+  -> 문자열을 수정하려고 하면 새로운 String 생성
+
+  장점 : 값이 변경되지 않기 때문에 여러 Thread 동시에 사용할 때 안전
+  단점 : 많은 메모리와 시간이 소요
+
+        String str = "Hello";
+        str = str + "Word"; -> str = HelloWorld라는 새로운 객체 생성
+
+StringBuilder
+- (가변) 길이가 변할 수 있음
+  분자열을 변경하면 기존 객체를 수정
+
+  장점 : 반복적으로 문자열을 변경 시 성능이 좋음
+  단점 : Thread Unsafe
+
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append("World");
+
+StringBuffer
+- (가변) 길이가 변할 수 있음
+  Multi Thread 가능 (StringBuilder 와의 차이점)
+
+  장점 : Multi-thread
+  단점 : Cuz of overhead of synchronization, slower than StringBuilder
+
+
+
                     String               StringBuilder          StringBuffer
 
 불변성                 불변                     가변                  가변
 
-스레드                 안전                     불안전                 안전
+스레드            Thread Safe               Thread Unsafe          Thread Safe
 
-안전성                 동기                     비동기                동기
+안전성                 동기                     비동기                  동기
 
 성능           문자열이 변경될 떄마다           문자열 변경 시        스레드 안전성을 고려시
                 새로운 객체 생성               성능 우수               성능 우수
 
 사용용도        값이 변경되지 않는              단일 스레드에서          멀티스레드에서
-                문자열에 사용                 문자열 변경시 사용        문자열 변경시 사용
+                문자열에 사용                문자열 변경시 사용       문자열 변경시 사용
+
